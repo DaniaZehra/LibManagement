@@ -4,6 +4,7 @@
 #include<fstream>
 #include<string>
 #include <iostream>
+#include"UserInfoheader.h"
 using namespace std;
 
 /*class Book {
@@ -20,13 +21,7 @@ public:
     }
 
 };*/
-class Register {
-	string id;
-	string f_name;
-	string l_name;
-	string password;
-public:
-	void prompt()
+void Register :: prompt()
 	{
 		system("cls");
 		cout << "ARE YOU A:\n1.STUDENT\n2.TEACHER\n" << endl;
@@ -37,15 +32,21 @@ public:
 		switch (a)
 		{
 		case 1:
-		{   Student 
+		{  
 			cout << "ENTER YOUR FIRST NAME : : ";
 		    cin >> f_name;
 		    cout << "ENTER YOUR LAST NAME : : ";
 		    cin >> l_name;
 		    cout << "ENTER YOUR ROLL NO. : : ";
 		    cin >> id;
-		    cout << "ENTER YOUR PASSWORD : : ";
-		    cin >> password;
+			cout << "ENTER YOUR PASSWORD : : ";
+			cin >> password;
+			//checkPassword(password);
+		/*	while (checkPassword(password) == 0) {
+				cout << "ENTER YOUR PASSWORD : : ";
+				cin >> password;
+		   }*/
+			Student s2(f_name, l_name, id, password);
 		break; }
 		case 2:
 		{
@@ -66,17 +67,16 @@ public:
 			prompt();
 			break;
 		}
-
-		}
 		
+		}
+		this->checkPassword(password);
 	}
 
-};
 void display() {
 	cout << "\n\t*****************************************************************************************************\n\n";
 	cout << "\t\t\t\t\t\t\tTHE BOOK NOOK\n";
 	cout << "\n\t*****************************************************************************************************\n\n";
-}
+};
 
 int main()
 {
@@ -92,7 +92,7 @@ int main()
 		cout << "\n\t*****************************************************************************************************\n";
 		system("cls");
 		display();
-        cout << "\t   ARE YOU A:  1.USER \t2.ADMINISTRATOR\n";
+        cout << "\nARE YOU A:  1.USER \t2.ADMINISTRATOR\n";
         cin >> n;
         switch (n)
         {
@@ -114,6 +114,7 @@ int main()
             {
                
                 r1.prompt();
+
             }
             }
         }
